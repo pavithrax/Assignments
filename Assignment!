@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .card {
+            box-shadow: 0 0 1px 0 rgb(0 0 0);
+            transition: 0.3s;
+            border-radius: 14px;
+            /* margin-left: 25px; */
+            /* height: 357px; */
+            /* height: 300px; */
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .card1:hover {
+            box-shadow: 0 8px 16px 0 rgb(0 0 0 / 51%) !important
+        }
+
+        .container {
+            padding: 2px 16px;
+        }
+
+        .card1 {
+            box-shadow: 0 0 3px 0 #006000 !important;
+            transition: 0.3s;
+            width: 85%;
+            padding: 10px;
+            margin-left: 2.2rem;
+            cursor: pointer;
+
+        }
+
+        .tickMark {
+            margin-top: 2%;
+            font-size: 17px;
+            color: green;
+        }
+
+        .cross {
+            color: red;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            width: 119%;
+        }
+
+
+
+        .redBg {
+            box-shadow: 0 0 3px 0 #a20319 !important;
+        }
+
+        .quickCards {
+            box-shadow: -3px -1px 10px 1px rgb(0 0 0 / 78%);
+            transition: 0.3s;
+            border-radius: 14px;
+            padding: 20px;
+            height: 140px;
+            cursor: pointer;
+
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 10px;
+        }
+        .row {
+            padding: 10px;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+
+        }
+
+        #intel {
+            display: none;
+        }
+
+        #internet {
+            display: none;
+        }
+
+        #chrome {
+            display: none;
+        }
+
+        #modern {
+            display: none;
+        }
+
+        /* tr:nth-child(even) {
+            background-color: #dddddd;
+        } */
+        th {
+            background-color: #9696ac;
+        }
+        .head {
+            background-color:#3291e2;
+            color: white; 
+            font-size: 30px;
+            width: 100%;
+        }
+        nav-tabs>li.active>a,
+        .nav-tabs>li.active>a:focus,
+        .nav-tabs>li.active>a:hover {
+            color: #555;
+            cursor: pointer;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-bottom-color: transparent;
+            width: 71px;
+        }
+        .body1 {
+            background-color:#3291e2; 
+            text-align: center;
+            height: 92vh;
+        }
+        @media (min-width: 768px) {
+            .navbar-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 143%;
+    margin-left: -1rem;
+        }
+}
+        @media (min-width:1200px){
+            nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+                color: #555;
+                cursor: pointer;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-bottom-color: transparent;
+                width: 71px;
+                width: 119px;
+                margin-left: -3rem;
+            }
+        }
+        @media (max-width:1000px) and (min-width:750px) {
+            .navbar-nav>li>a {
+                font-size: 10px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+
+            .navbar-nav {
+                margin: 7.5px -15px;
+            }
+
+            .title1 {
+                font-size: 15px;
+            }
+
+            .quickCards {
+                box-shadow: -3px -1px 10px 1px rgb(0 0 0 / 78%);
+                transition: 0.3s;
+                border-radius: 14px;
+                padding: 5px;
+            }
+            
+
+            nav-tabs>li.active>a,
+            .nav-tabs>li.active>a:focus,
+            .nav-tabs>li.active>a:hover {
+                color: #555;
+                cursor: pointer;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-bottom-color: transparent;
+                width: 71px;
+            }
+        }
+
+        @media (max-width:770px) {
+            .navbar-nav>li>a {
+                font-size: 9px;
+            }
+            .body1 {
+                background-color:#3291e2; 
+                text-align: center;
+                height: auto;
+                margin-top: -1rem;
+                width: 102%;
+            }
+            .col1 {
+                margin-top: 2rem;
+            }
+            .quickCards {
+                height: auto;
+            }
+        }
+    </style>
+    <script>
+        function myFunction(data) {
+            console.log(data);
+            if (data == 'precheck') {
+                document.getElementById("precheck").style.display = 'block';
+                document.getElementById("intel").style.display = "none";
+                document.getElementById("internet").style.display = "none";
+                document.getElementById("chrome").style.display = "none";
+                document.getElementById("modern").style.display = "none";
+                document.getElementById("intelCard").style.boxShadow = "0 8px 16px 0 rgb(0 0 0 / 51%) !important";
+            } else if (data == 'intel') {
+                document.getElementById("intel").style.display = 'block';
+                document.getElementById("precheck").style.display = "none";
+                document.getElementById("internet").style.display = "none";
+                document.getElementById("chrome").style.display = "none";
+                document.getElementById("modern").style.display = "none";
+            } else if (data == 'internet') {
+                document.getElementById("internet").style.display = 'block';
+                document.getElementById("precheck").style.display = "none";
+                document.getElementById("intel").style.display = "none";
+                document.getElementById("chrome").style.display = "none";
+                document.getElementById("modern").style.display = "none";
+            } else if (data == 'chrome') {
+                document.getElementById("chrome").style.display = 'block';
+                document.getElementById("precheck").style.display = "none";
+                document.getElementById("internet").style.display = "none";
+                document.getElementById("intel").style.display = "none";
+                document.getElementById("modern").style.display = "none";
+            } else if (data == 'modern') {
+                document.getElementById("modern").style.display = 'block';
+                document.getElementById("precheck").style.display = "none";
+                document.getElementById("internet").style.display = "none";
+                document.getElementById("chrome").style.display = "none";
+                document.getElementById("intel").style.display = "none";
+            }
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="head">
+        &nbsp;intel. &nbsp; <span style="font-size: 15px;">Battery Life Diagnosis Tool</span>
+    </div>
+    <div class="row" style="width: 100%;">
+        <div class="col-sm-1 body1">
+            <!-- <ul class="nav navbar-nav nav nav-tabs" role="tablist">
+                <li>
+                    <a href="#tab2" (change)="arg1Changed()" data-toggle="tab">
+                        <i class="fa fa-home" style="font-size: 30px;"></i>
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#tab3" (change)="arg1Changed()" data-toggle="tab">
+                        <i class="fa fa-list" style="font-size: 30px;"></i>
+                        Reports
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#tab4" data-toggle="tab" >
+                        <i class="fa fa-question-circle" style="font-size: 30px;"></i>
+                        Support
+                    </a>
+                </li>
+                <li></li>
+
+            </ul> -->
+            <ul class="nav navbar-nav nav nav-tabs" role="tablist" style="text-align: center !important;">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#home">
+                        &nbsp;&nbsp;<i class="fa fa-home" style="font-size: 20px;"></i> <br>&nbsp;&nbsp;Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#menu1">
+                        <i class="fa fa-list" style="font-size: 20px;"></i> <br>
+                        Reports
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#menu2">
+                        <i class="fa fa-question-circle" style="font-size: 20px;"></i><br>
+                        Support
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="tab-content col-sm-11">
+            <div id="home" class="container tab-pane active"><br>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="card">
+                            <h4 style="text-align: center;padding-top: 15px;" onclick="myFunction('precheck')">
+                                <b>Precheck List</b>
+                            </h4>
+                            <div style="margin: 2rem;"></div>
+
+                            <div class="card1" id="intelCard" onclick="myFunction('intel')">
+                                &nbsp;&nbsp;<i class="fa fa-check-circle tickMark"></i>&nbsp;&nbsp;&nbsp;Intel CPU
+                                System
+
+                            </div>
+                            <div style="margin: 2rem;"></div>
+                            <div class="card1" id="internetCard" onclick="myFunction('internet')">
+                                &nbsp;&nbsp; <i class="fa fa-check-circle tickMark"></i>&nbsp;&nbsp;&nbsp;Internet
+                                Connectivity
+                            </div>
+                            <div style="margin: 2rem;"></div>
+
+                            <div class="card1" id="chromeCard" onclick="myFunction('chrome')">
+                                &nbsp;&nbsp;<i class="fa fa-check-circle tickMark"></i>&nbsp;&nbsp;&nbsp; Chrome
+                                Installed
+                            </div>
+                            <div style="margin: 2rem;"></div>
+                            <div class="card1 redBg" id="modernCard" onclick="myFunction('modern')">
+                                &nbsp;&nbsp; <i class="fa fa-times-circle tickMark cross"></i>&nbsp;&nbsp;&nbsp;Modern
+                                Standby
+                                Supported
+                            </div>
+                            <div style="margin: 2rem;"></div>
+                            <div >&nbsp;</div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-7" style="width: 56%;margin-left: 2%;" id="precheck">
+                        <div style="margin: 1rem;"></div>
+                        <div class="row" style="text-align: center;">
+                            <div class="col-sm-6">
+                                <div class="quickCards">
+                                    <div class="card-header ">
+                                        <h4><b class="title1"> Full Test</b></h4>
+                                    </div>
+                                    <div class="card-body" style="font-size: 12px;">
+                                        <p class="card-text"> card's content.</p>
+                                        <footer>
+                                            <hr style="background-color: #3291e2; height: 1px;">
+                                            Someone famous in
+                                        </footer>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col1">
+                                <div class="quickCards">
+                                    <div class="card-header title1 ">
+                                        <h4><b class="title1"> Modern Standby Test</b></h4>
+
+                                    </div>
+                                    <div class="card-body" style="font-size: 12px;">
+                                        <p class="card-text"> card's content.</p>
+                                        <footer>
+                                            <hr style="background-color: #3291e2; height: 1px;">
+                                            Someone famous in
+                                        </footer>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: center;">
+                            <!-- <div style="margin: 2rem;"></div> -->
+
+                            <div class="col-sm-6">
+                                <div class="quickCards">
+                                    <div class="card-header  ">
+
+                                        <h4><b class="title1"> Quick Assessment</b></h4>
+                                    </div>
+                                    <div class="card-body" style="font-size: 12px;">
+                                        <p class="card-text">card's content.</p>
+                                        <footer>
+                                            <hr style="background-color: #3291e2; height: 1px;">
+                                            Someone famous in
+                                        </footer>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-sm-7" style="width: 56%;margin-left: 2%;" id="intel">
+                        <h4>Intel CPU System</h4>
+                        <table>
+                            <tr>
+                                <th>Offenders Category</th>
+                                <th>Key Offenders Identified based on Session analysis </th>
+                                <th>Recommendation / Fixed Direction</th>
+
+                            </tr>
+                            <tr>
+                                <td>Activators</td>
+                                <td>Usb Readers</td>
+                                <td>-</td>
+                            </tr>
+
+                            <tr>
+                                <td>Processors</td>
+                                <td>Usb Readers</td>
+                                <td>-</td>
+                            </tr>
+
+                            <tr>
+                                <td>Activators</td>
+                                <td>Usb Readers</td>
+                                <td>-</td>
+                            </tr>
+
+
+                        </table>
+                    </div>
+
+                    <div class="col-sm-7" style="width: 56%;margin-left: 2%;" id="internet">
+                        <h4>Internet
+                            Connectivity</h4>
+                    </div>
+
+                    <div class="col-sm-7" style="width: 56%;margin-left: 2%;" id="chrome">
+                        <h4>Chrome
+                            Installed</h4>
+                    </div>
+
+                    <div class="col-sm-7" style="width: 56%;margin-left: 2%;" id="modern">
+                        <h4>Modern
+                            Standby
+                            Supported</h4>
+                    </div>
+                </div>
+                <!-- <h3>HOME</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
+            </div>
+            <div id="menu1" class="container tab-pane fade">
+                <h3>Reports</h3>
+                <table>
+                    <tr>
+                        <th>Session</th>
+                        <th>Duration</th>
+                        <th>Power Consumption</th>
+                        <th>SW Drips</th>
+                        <th>HW Drips</th>
+                        <th>Grade</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1:00:00</td>
+                        <td>2,498mW</td>
+                        <td>SW: 0%</td>
+                        <td>HW: -</td>
+                        <td>Red</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1:00:00</td>
+                        <td>2,498mW</td>
+                        <td>SW: 0%</td>
+                        <td>HW: -</td>
+                        <td>Red</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>1:00:00</td>
+                        <td>2,498mW</td>
+                        <td>SW: 0%</td>
+                        <td>HW: -</td>
+                        <td>Red</td>
+                    </tr>
+
+                </table>
+                <br>
+                <h5>Top 5 Problem Area</h5>
+                <table>
+                    <tr>
+                        <th>Offenders Category</th>
+                        <th>Key Offenders Identified based on Session analysis </th>
+                        <th>Recommendation / Fixed Direction</th>
+
+                    </tr>
+                    <tr>
+                        <td>Activators</td>
+                        <td>Usb Readers</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td>Processors</td>
+                        <td>Usb Readers</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td>Activators</td>
+                        <td>
+                            <dl>
+                                <dt>No HW Drips</dt>
+                                <dd>- No HW Drips CB.LTR_&PCH (Active% - 94%)</dd>
+                            </dl>
+                        </td>
+                        <td>-</td>
+                    </tr>
+
+
+                </table>
+            </div>
+            <div id="menu2" class="container tab-pane fade">
+                <h3>Support</h3>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- </div> -->
+</body>
+
+</html>
