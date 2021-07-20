@@ -1,0 +1,121 @@
+var pr = $('.col-sm-5').find('button'); -- get all buttons within this class
+
+var pr = $('.col-sm-5').find('button[class*="btn-primary"]');-- narrowing it to specifc class
+
+var t = $([document.querySelector('h2'),document.querySelector('h3')]); -- select all h2 and h3
+
+var v = $(document.getElementById('house-detail'));
+
+var table = $('tbody').parents('table'); --- parents in an element(ie., tbody is an element)
+
+var table = $('tbody').children(); -- children in an element
+
+$('h2').attr('style','background-color: yellow');
+
+$('h2').css({backgroundColor:'yellow'});
+
+$('h2').addClass('highlight'); -- adding classes 
+
+$('h2').addClass(function() {
+return 'bordered';
+});
+
+$('h2').hide(); and $('h2').show(); or 
+
+just use $('h2').toggle();
+
+$('h2').toggle(function(){
+	console.log('toggle');
+});
+
+using fading effects
+$('h2').fadeOut();
+$('h2').fadeIn();
+
+$('h2').fadeOut('fast');
+
+$('h2').fadeIn(function(){
+	$('#special-features').addClass('highlight');
+});
+
+the above code first it fades in and then apply hight light class to the id with special-features
+
+using event
+
+to load the doc
+$(document).ready(function(){
+    console.log('page loaded');
+});
+
+to do some action everytime some button is clicked
+$('#save-button').on('click',function(){
+    console.log('on functon');
+});
+
+to turn of this action 
+$('#save-button').off('click',function(){
+    console.log('off functon');
+});
+
+to don anything just one time the button is clicked
+$('#save-button').one('click',function(){
+    console.log('one functon');
+});
+
+$('#save-button').click(function(){
+    console.log('clicked');
+}); same as click in angular
+
+$('#special-features li').addClass('highlight bordered'); chaining
+
+$('#special-features li').width('50%').height('200px').addClass('highlight bordered');
+
+
+$('#special-features li').width('50%').height('200px').addClass('highlight bordered').each(function(index, item){
+    var $item = $(item);
+    $item.text($item.text() + ' '+ $item.attr('data-feature-id'));
+});
+
+each ==> forEach function
+
+chaining on an induvidual item 
+$('#save-button')
+.click(function()
+{
+    console.log('clicked')
+})
+.addClass('bordered');
+
+adding usere input
+
+.val() is used to pass data
+$('#notes-box').val('fdghjhgv');
+$('#showing-date').val('2015-01-01');
+
+$('#showing-date').val(); to get the data with this id 
+
+
+to send value to a check box
+$('#owner-present-check').prop('checked', true); here attr dosent work
+
+to get value of check box 
+$('#owner-present-check').prop('checked'); -- true / false
+
+var st = $('input[name="available"]:checked').val(); -- to get the value from a radio box using pseudo class
+
+internet expolorer 9+ -- use jQuery 3x std
+internet expolorer2 6,7,8 3x compat
+
+
+
+jQuery Fundamentals.
+
+ $('p,a'); -- select 2 tags 
+
+ $('div p'); -- select a p tag inside a div tag where div is parent and p is a child
+
+ $('div').css('background-color', 'green') select div and change the bgcolor
+
+ alert($('#DataTable').html());
+
+ $('div.BlueDiv').css('border', '2px solid black'); a div with class bluediv gets selected
