@@ -103,7 +103,7 @@ $('#owner-present-check').prop('checked'); -- true / false
 
 var st = $('input[name="available"]:checked').val(); -- to get the value from a radio box using pseudo class
 
-internet expolorer 9+ -- use jQuery 3x std
+internet expolorer 9+ -- use jQue		ry 3x std
 internet expolorer2 6,7,8 3x compat
 
 
@@ -119,3 +119,149 @@ jQuery Fundamentals.
  alert($('#DataTable').html());
 
  $('div.BlueDiv').css('border', '2px solid black'); a div with class bluediv gets selected
+
+
+select by attribute value
+	$('div[title="Contains Table"]') = selects all div with title = Contains Table (*note : its case sensitive);
+	$('input[type="text"]');
+	$('input[type="text"]').css('background-color','yellow');
+	$(':input'); select all input element (ie., even buttons, radio btns, dropdown) gets selected 
+	$(':input[type="textarea"]'); -- selects the textarea
+	$(':input[type="textarea"]').css('background-color','red'); 
+
+	$(':input')[0].value;
+	typeof($(':input')[0]);
+	$($(':input')[0]).val(); -- john
+
+	$(':input').each(function () {
+                var element = $(this);
+                alert(element.val());
+		// to assign any value just add element.val('Any value');
+
+        })
+
+selector Features
+	$('div:contains("my div")'); -- selects the div that contains the word "my div"
+	$('div:contains("my div")').html("hello"); -- updates the div data with hello
+	$('tr:odd').css('background-color','red');
+	$('tr:even').css('background-color','yellow');
+	$('input[value^="Jo"]'); -- selects input that statrts with Jo
+	$('input[value$="n"]'); -- selects input ends with n
+	$('input[value*="hn"]'); selects input that conatins hn
+	$('.dummy tr:odd').css('background-color','green'); this and below does the same thing... it is selecting class
+	$('#DataTable tr:odd').css('background-color','green'); this selects table with id datatable and adds class
+
+iterating--
+	$(':input').each(function (index) {
+                var element = $(this);
+                console.log(index + '-' +element.val());
+         });
+
+	$(':input').each(function () {
+                var element = $(this);
+                alert(element.val());
+		// to assign any value just add element.val('Any value');
+
+        })
+	instead of using this we can use the below onw
+	$(':input').each(function (index,elem) {
+                console.log(index + '-'  + $(elem).val());
+            });
+
+
+to find the childern and add class for that
+	$(':input').find('.card').addClass('highlight'); -- where it fetches all inputs and find only class with card and add the class for those elements
+	$(':input').find('button').css('background-color','red'); -- fetches the input buttons and add css for that.
+
+Modifying attributes
+	.attr(attributeName, val);
+	$('img').attr({title:'My image',style: 'border: 2px solid black'});
+
+	
+	 $('div.BlueDiv,div.RedDiv').attr({
+                title: 'Some Title 3',
+                style: 'font-size: 30pt;background-color: yellow'
+         });
+
+Chaining attributes
+	$('div.BlueDiv,div.RedDiv').attr({
+                title: 'Some Title 3',
+                // style: 'font-size: 30pt;background-color: yellow;color: black'
+         }).css( {
+                'background-color': 'red',
+                'color': 'white'
+         }).css(
+                {'font-size': '40pt'}
+         );
+
+Adding and removing nodes: 
+
+	.html('hello') used to change the value
+	.text('hai') --  used to change the test alone
+
+	.append() -- add child at the end of matching element (child first then parent ex., $('.childclass').appendTo('.parentClass'))
+	.appendTo() -- add child at the end of matching element (parent first then child ex., $('.parentclass').append('.childClass'))
+
+	.prepend() -- add child at the begining of matching element (child first then parent ex., $('.childclass').prependTo('.parentClass'))
+	.prependTo() -- add child at the begining of matching element (parent first then child ex., $('.parentclass').prepend('.childClass'))
+
+	    var abc = $('#TableContainerDiv'); 
+            abc.append('<br /><span style="background-color:green">Appended Child 1 </span>');
+            abc.prepend('<br /><span style="background-color:green">PRepended Child 2 </span>');
+            $('<br /><span style="background-color:purple">Appended to Child 2</span>').appendTo(abc);
+            $('<br /><span style="background-color:purple">Prepended to Child 2</span>').prependTo(abc);
+	
+	.wrap() -- warp all the child objects to a parent (ex., $('.state').wrap('<div class="US_State"/>');
+	   -result      <div class="Us_State">
+				<div class="state>Text</div>
+			</div>
+	   $('span.Foo').wrap('<div class="RedDiv" />')
+
+
+	.remove() --  used to remove specific Elements/Node (ex., .remove('.hide'); --- removes class hide)
+	   $('div.ParentWrapper').remove();
+
+Class functions
+	.addClass()
+	.removeClass()
+	.hasClass() --  returns true/false
+	.toggleClass() -- toggle button
+
+		$('input[type="text"]').addClass('Highlight');
+		$('#LastNameTextBox').hasClass('Highlight'); -- true
+		$('#LastNameTextBox').removeClass('Highlight');
+		$('div').removeClass(); --  removes all the class for all the input elements
+		$('#LastNameTextBox').toggleClass('Highlight'); -- adds class if the class is not there and removes the class if the class is already there
+
+		function FocusBlur(tb) {
+            		$(tb).toggleClass('Highlight');
+        	}
+		<input id="FirstNameTextBox" onfocus="FocusBlur(this)" onblur="FocusBlur(this)" value="John" type="text" />
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+to get hyphen in checkbox
+
+ 	[indeterminate]="!item5.PackageAllSelected && item5.AtleastOnePackageSelected"
+
+	input[type=checkbox]:checked + b:before {
+ 		 content: "\2713";
+  		font-family: ux-icons;
+
+	}
+
+	input[type=checkbox]:indeterminate + b:before {
+  		content: "\f067";
+  		font: 14px/1 DXIcons;
+	}
